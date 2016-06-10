@@ -7,12 +7,15 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logic.Message;
 
 /**
  *
@@ -20,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "myServlet", urlPatterns = {"/myServlet"})
 public class myServlet extends HttpServlet {
+    
+    private List<Message> messages = new ArrayList<Message>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,10 +63,31 @@ public class myServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {       
+            throws ServletException, IOException {   
+        /*
         for (Map.Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
-            System.out.println(entry.getKey() + ":\t" + entry.getValue()[0]);
-        }
+            try {
+                System.out.println(entry.getKey() + ":\t" + entry.getValue()[0]);
+            } catch (IndexOutOfBoundsException e) {
+                System.err.println(entry.getKey() + " has no value");
+            }
+        */
+            Message msg = new Message(
+                    request.getParameter("Vorname"), 
+                    request.getParameter("Nachname"), 
+                    request.getParameter("Datum"), 
+                    request.getParameter("Kategorie"), 
+                    request.getParameter("Ueberschrift"), 
+                    request.getParameter("Nachricht")
+            );
+            this.messages.add(msg);
+            
+            System.out.println("Nachrichten:");
+            for (Message m : this.messages) {
+                System.out.println(m.toString());
+                
+            }
+            System.out.println("");
         processRequest(request, response);
     }
 
