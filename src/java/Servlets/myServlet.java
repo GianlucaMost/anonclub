@@ -7,6 +7,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,7 +58,10 @@ public class myServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {       
+        for (Map.Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
+            System.out.println(entry.getKey() + ":\t" + entry.getValue()[0]);
+        }
         processRequest(request, response);
     }
 

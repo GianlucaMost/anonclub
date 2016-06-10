@@ -16,7 +16,7 @@
     </nav>
 
     <h1>Neue Nachricht</h1>
-    <form>
+    <form action="myServlet" method="GET" id="form1">
       <fieldset>
         <legend>Personendaten</legend>
         <label for="Vorname">Vorname: </label>
@@ -39,8 +39,8 @@
        </fieldset>
        <fieldset>
          <legend>Nachricht</legend>
-         <label for="Überschrift">Überschrift: </label>
-         <input type="Überschrift" id="Überschrift" name="Überschrift" required>
+         <label for="Ueberschrift">Überschrift: </label>
+         <input type="text" id="Ueberschrift" name="Ueberschrift" required>
          <br>
          <label for="Nachricht">Nachricht: </label>
          <textarea name="Nachricht" rows="8" cols="40" id="Nachricht" required></textarea>
