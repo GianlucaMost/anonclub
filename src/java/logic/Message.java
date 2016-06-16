@@ -5,11 +5,13 @@
  */
 package logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author gianlucamost
  */
-public class Message {
+public class Message implements Serializable{
     private String name, surname, date, category, headline, message;
     
     public Message() {}
