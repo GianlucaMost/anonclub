@@ -12,12 +12,13 @@ import java.io.Serializable;
  * @author gianlucamost
  */
 public class Message implements Serializable{
-    private String name, surname, date, category, headline, message;
+    private String name, surname, mail, date, category, headline, message;
     
     public Message() {}
-    public Message(String name, String surname, String date, String category, String headline, String message) {
+    public Message(String name, String surname, String mail, String date, String category, String headline, String message) {
         this.name = name;
         this.surname = surname;
+        this.mail = mail;
         this.date = date;
         this.category = category;
         this.headline = headline;
@@ -38,6 +39,14 @@ public class Message implements Serializable{
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    
+    public String getMail() {
+        return this.mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getDate() {
@@ -74,6 +83,13 @@ public class Message implements Serializable{
     
     @Override
     public String toString() {
-        return this.name + this.surname + this.date + this.category + this.headline + this.message;
+        return 
+                this.name + " // " +
+                this.surname +  " // " +
+                this.mail +  " // " +
+                this.date +  " // " +
+                this.category +  " // " +
+                this.headline +  " // " +
+                this.message;
     }
 }

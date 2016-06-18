@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,6 +76,7 @@ public class myServlet extends HttpServlet {
             Message msg = new Message(
                     request.getParameter("Vorname"), 
                     request.getParameter("Nachname"), 
+                    request.getParameter("Mail"),
                     request.getParameter("Datum"), 
                     request.getParameter("Kategorie"), 
                     request.getParameter("Ueberschrift"), 
@@ -90,6 +92,11 @@ public class myServlet extends HttpServlet {
             System.out.println("");
             
             request.setAttribute("myMessage", msg);
+            
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
+            dispatcher.forward(request, response);
+        
         processRequest(request, response);
     }
 
