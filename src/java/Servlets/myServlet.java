@@ -88,6 +88,8 @@ public class myServlet extends HttpServlet {
                 
             }
             System.out.println("");
+            
+            request.setAttribute("myMessage", msg);
         processRequest(request, response);
     }
 
