@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logic.ListManager;
 import logic.Message;
 
 /**
@@ -90,6 +91,10 @@ public class myServlet extends HttpServlet {
                 
             }
             System.out.println("");
+            
+            
+           ListManager.addToList(msg);
+            
             
             request.setAttribute("myMessage", msg);
             
