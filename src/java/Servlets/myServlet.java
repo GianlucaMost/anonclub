@@ -65,36 +65,35 @@ public class myServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {   
-        /*
-        for (Map.Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
-            try {
-                System.out.println(entry.getKey() + ":\t" + entry.getValue()[0]);
-            } catch (IndexOutOfBoundsException e) {
-                System.err.println(entry.getKey() + " has no value");
+            throws ServletException, IOException {
+            
+            ListManager lm = ListManager.getInstance();
+
+            Message msg = new Message();
+            if(request.getParameter("lesen")==null) {
+                msg.setName(request.getParameter("Vorname"));
+                msg.setSurname(request.getParameter("Nachname"));
+                msg.setMail(request.getParameter("Mail"));
+                msg.setDate(request.getParameter("Datum")); 
+                msg.setCategory(request.getParameter("Kategorie")); 
+                msg.setHeadline(request.getParameter("Ueberschrift")); 
+                msg.setMessage(request.getParameter("Nachricht"));
+                this.messages.add(msg);
+                lm.addToList(msg);
+            }else {
+                int i = Integer.parseInt(request.getParameter("lesen"));
+                msg = lm.getMessageList().get(i);
             }
-        */
-            Message msg = new Message(
-                    request.getParameter("Vorname"), 
-                    request.getParameter("Nachname"), 
-                    request.getParameter("Mail"),
-                    request.getParameter("Datum"), 
-                    request.getParameter("Kategorie"), 
-                    request.getParameter("Ueberschrift"), 
-                    request.getParameter("Nachricht")
-            );
-            this.messages.add(msg);
             
             System.out.println("Nachrichten:");
-            for (Message m : this.messages) {
+            for (Message m : lm.getMessageList()) {
                 System.out.println(m.toString());
                 
             }
             System.out.println("");
             
             
-           ListManager.addToList(msg);
-            
+            System.out.println(lm.getMessageList().size());
             
             request.setAttribute("myMessage", msg);
             
@@ -116,7 +115,8 @@ public class myServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        doGet(request, response);
     }
 
     /**

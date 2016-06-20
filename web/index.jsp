@@ -21,29 +21,26 @@
         
         <h1>Vereinsnachrichten</h1>
         <table border="1">
-          <tr>
-            <td>Ueberschrift</td>
-            <td>Datum</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="detail.jsp"> Testnachricht</a>
-            </td>
-            <td>11.04.2016</td>
-          </tr>
-          
-          <%int i=0; for(Message msg : ListManager.getMessageList()){%>
-            <tr>
-                <td>
-                    <a href="detail.jsp">
-                        <%msg.getHeadline();%>
-                    </a>
-                </td>
-                <td>
-                    <%msg.getDate();%>
-                </td>
-            </tr>
-          <%}%>   
+            <thead>
+                <tr>
+                  <td>Ueberschrift</td>
+                  <td>Datum</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%int i=0; for(Message msg : ListManager.getInstance().getMessageList()){%>
+                  <tr>
+                      <td>
+                          <a href="myServlet?lesen=<%=i++%>">
+                              <%=msg.getHeadline()%> 
+                          </a>
+                      </td>
+                      <td>
+                          <%=msg.getDate()%>
+                      </td>
+                  </tr>
+                <%}%>   
+            </tbody>
         </table>
 
         <footer>

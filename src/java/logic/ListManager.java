@@ -14,19 +14,27 @@ import logic.Message;
  * @author gianlucamost
  */
 public class ListManager {
-    private static List<Message> messageList = new ArrayList<>();
+    private static ListManager instance;
+    private List<Message> messageList = new ArrayList<>();
 
-    public ListManager() {}
+    private ListManager() {}
+    
+    public static synchronized ListManager getInstance () {
+    if (ListManager.instance == null) {
+      ListManager.instance = new ListManager ();
+    }
+    return ListManager.instance;
+  }
 
-    public static List<Message> getMessageList() {
-        return messageList;
+    public List<Message> getMessageList() {
+        return this.messageList;
     }
 
-    public static void setMessageList(List<Message> messageList) {
-        ListManager.messageList = messageList;
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
     }
     
-    public static void addToList(Message m){
-        messageList.add(m);
+    public void addToList(Message m){
+        this.messageList.add(m);
     }
 }
