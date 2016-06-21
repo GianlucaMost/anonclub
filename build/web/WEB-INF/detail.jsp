@@ -19,7 +19,6 @@
             <a href="index.jsp">
               <img class="brand" src="logo.png" alt="Logo" />
             </a>
-            <a href="index.jsp"> Vereinsnachrichten-Index </a>
             <a href="vorstand.html"> Vorstand </a>
             <a href="new_message.html"> Neue Nachricht</a>
         </nav>

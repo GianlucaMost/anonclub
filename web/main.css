@@ -18,7 +18,7 @@ and open the template in the editor.
 }
 
 a {
-  color: lightblue;
+  color: limegreen;
 }
 
 nav a:visited {
@@ -26,14 +26,30 @@ nav a:visited {
 }
 
 body {
-  color: lightgreen;
+  color: lime;
   background-color: black;
+  padding-top: 2%;
+  padding-left: 5%;
+}
+
+body>nav {
+    padding-bottom: 3%;
+}
+
+body>footer {
+    padding-top: 3%;
 }
 
 nav>a {
   padding: 1em;
   text-transform: capitalize;
   font-family: monospace;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+nav>a:hover {
+    font-weight: bold;
 }
 
 form>fieldset {
