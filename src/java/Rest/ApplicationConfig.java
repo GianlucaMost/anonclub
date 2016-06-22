@@ -7,9 +7,8 @@ package Rest;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.ws.rs.*;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import logic.Shoutbox;
 
 /**
  *
@@ -18,9 +17,10 @@ import logic.Shoutbox;
 @ApplicationPath("resources")
 public class ApplicationConfig extends Application {
     private Set<Object> singletons;
+    
     public ApplicationConfig(){
         singletons = new HashSet<Object>();
-        singletons.add(new Shoutbox());
+        singletons.add(new Service());
     }
     @Override
     public Set<Class<?>> getClasses(){

@@ -65,3 +65,7 @@ form>fieldset>select {
 textarea {
   resize: none;
 }
+
+#shoutbox,.shoutbox {
+    color: white;
+}

@@ -8,6 +8,7 @@ package Rest;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import logic.Shoutbox;
 
 /**
@@ -21,7 +22,7 @@ public class Service {
     public Service(){}
     
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Shoutbox> getSbList(){
         return this.sbList;
     }

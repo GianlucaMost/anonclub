@@ -6,6 +6,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
         <title> anonclub </title>
+        <script>			
+            function countChars(){
+                var msg = document.getElementById("message");
+                var remaining = document.getElementById("remaining");
+                var maxLength = 240;
+                if(msg.value.length < maxLength) {
+                    remaining.innerHTML = (maxLength-msg.value.length);
+                }else {
+                    remaining.innerHTML = (maxLength-msg.value.length);
+                    alert("Maximale Anzahl an Zeichen wurde erreicht!");
+                }
+            }
+        </script>
     </head>
     <body>
         <nav>
@@ -41,7 +54,20 @@
                 <%}%>   
             </tbody>
         </table>
-
+            
+        <div class="shoutbox">
+            <h2>Shoutbox</h2>
+            <ul>
+                <li>Test1</li>
+                <li>Test2</li>
+                <li>Test3</li>
+            </ul>
+            <label for="Message">Nachricht: </label>
+            <br>
+            <textarea name="Message" rows="8" cols="40" id="message" onkeyup="countChars()" autofocus required></textarea>
+            <br>
+            <span id="remaining"> 240</span>/240 Zeichen übrig.
+        </div>
         <footer>
           <a href="#"> Rechtliche Hinweise </a>
         </footer>
