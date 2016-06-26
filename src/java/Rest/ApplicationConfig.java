@@ -16,18 +16,20 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("resources")
 public class ApplicationConfig extends Application {
-    private Set<Object> singletons;
+    private Set<Object> singeltons;
     
     public ApplicationConfig(){
-        singletons = new HashSet<Object>();
-        singletons.add(new Service());
+        singeltons = new HashSet<Object>();
+        //singeltons.add(new Service());
     }
+    
     @Override
     public Set<Class<?>> getClasses(){
         return new HashSet<Class<?>>();
     }
+    
     @Override
-        public Set<Object> getSingletons(){
-        return singletons;
+    public Set<Object> getSingletons() {
+        return singeltons;
     }
 }

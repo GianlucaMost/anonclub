@@ -5,8 +5,7 @@
  */
 package Rest;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import logic.Shoutbox;
@@ -15,19 +14,24 @@ import logic.Shoutbox;
  *
  * @author gianlucamost
  */
-@Path("/shoutbox")
+
+@Path("shoutbox")
 public class Service {
     private List<Shoutbox> sbList = new ArrayList<Shoutbox>();
     
-    public Service(){}
-    
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Shoutbox> getSbList(){
-        return this.sbList;
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Shoutbox> getShoutBoxList(){
+        //TODO nen String zurueck geben, den ich mir dann zu JSON umbastel
+        return sbList;
     }
+    
     @PUT
-    public void setMessage(@QueryParam("name") String name, @QueryParam("date") String date, @QueryParam("message") String message){
-        this.sbList.add(new Shoutbox(name, date, message));
+    public void setShoutBox(@QueryParam("datum") String datum, @QueryParam("name") String name, @QueryParam("nachricht") String nachricht) {
+        Shoutbox sb = new Shoutbox();
+        sb.setDate(datum);
+        sb.setName(name);
+        sb.setNachricht(nachricht);
     }
+    
 }

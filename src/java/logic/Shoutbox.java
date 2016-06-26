@@ -5,10 +5,15 @@
  */
 package logic;
 
+import javax.persistence.ElementCollection;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author gianlucamost
  */
+@XmlRootElement
 public class Shoutbox {
     private String date, name, message;
 

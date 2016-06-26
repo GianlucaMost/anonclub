@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-
+Import-Package: javax.xml.parsers,org.xml.sax.helpers,javax.naming,org.xml.sax.helpers,javax.xml.parsers;resolution:=optional,javax.naming;resolution:=optional
